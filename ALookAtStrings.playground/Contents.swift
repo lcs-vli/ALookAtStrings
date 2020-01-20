@@ -43,7 +43,7 @@ for scalar in alphabet.unicodeScalars {
     print("The unicode scalar's value is: \(scalar.value)")
 }
 print("==========================")
-
+ 
 // We can also use a loop to build a string from scalar values
 var builtStringFromLoop = ""
 for i in 97...122 {
@@ -146,7 +146,6 @@ let name = "Victoria Li"
 
 // Iterate over each character in the string
 for singleCharacter in name {
-    name
     // The output will show below in the Debug area
     print(singleCharacter)
 }
@@ -187,7 +186,26 @@ Say that you wish to encrypt the word `pen` using a *rightward shift of three ch
 */
 
 // Create the starting phrase
-let plainText = "pen"
+let plainText = "CAB"
+var ciperText = ""
 
 // Encrypt the starting phrase
+for scalar in plainText.unicodeScalars {
+    //print character and scalar value
+    print(scalar)
+    print(scalar.value)
+    
+    //shift each scalar valye by 3
+    let newScalarValue = scalar.value + 3
+    
+    //attempt to convert the scalar valye to an actura scalar
+    if let newScalar = UnicodeScalar(newScalarValue){
+        print(newScalarValue)
+        print(newScalar)
+        ciperText += String(newScalar)
+    }
+}
 
+print("The encrypted text is \(ciperText)")
+
+print("==========================")
